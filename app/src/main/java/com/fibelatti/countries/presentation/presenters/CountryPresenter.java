@@ -7,5 +7,7 @@ public interface CountryPresenter {
 
     void getAll();
 
+    void search(String query);
+
     void restoreData();
 }

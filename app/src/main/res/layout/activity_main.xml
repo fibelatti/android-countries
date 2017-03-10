@@ -24,5 +24,8 @@
         <include
             layout="@layout/layout_placeholder_retry_button"/>
 
+        <include
+            layout="@layout/layout_placeholder_no_results"/>
+
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

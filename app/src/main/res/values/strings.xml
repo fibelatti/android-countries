@@ -22,4 +22,7 @@
 
     <!-- MainActivity -->
     <string name="main_title">Country Search</string>
+
+    <string name="main_search_hint">Search for countries</string>
+    <string name="main_search_no_results">Oops! There are no results for the keywords you searched.</string>
 </resources>
