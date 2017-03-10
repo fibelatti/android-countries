@@ -18,4 +18,10 @@
 
     <color name="textPrimary">#424242</color>
     <color name="textSecondary">#757575</color>
+
+    <color name="colorRegionAfrica">#212121</color>
+    <color name="colorRegionAmericas">#F44336</color>
+    <color name="colorRegionAsia">#FFEB3B</color>
+    <color name="colorRegionEurope">#303F9F</color>
+    <color name="colorRegionOceania">#388E3C</color>
 </resources>

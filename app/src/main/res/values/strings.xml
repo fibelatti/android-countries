@@ -25,4 +25,11 @@
 
     <string name="main_search_hint">Search for countries</string>
     <string name="main_search_no_results">Oops! There are no results for the keywords you searched.</string>
+
+    <string name="main_region_all">All regions</string>
+    <string name="main_region_africa">Africa</string>
+    <string name="main_region_americas">Americas</string>
+    <string name="main_region_asia">Asia</string>
+    <string name="main_region_europe">Europe</string>
+    <string name="main_region_oceania">Oceania</string>
 </resources>

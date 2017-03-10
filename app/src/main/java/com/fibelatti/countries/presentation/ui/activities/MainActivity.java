@@ -1,6 +1,7 @@
 package com.fibelatti.countries.presentation.ui.activities;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.MenuItemCompat;
@@ -26,6 +27,12 @@ import com.fibelatti.countries.presentation.presenters.CountryPresenterView;
 import com.fibelatti.countries.presentation.presenters.impl.CountryPresenterImpl;
 import com.fibelatti.countries.presentation.ui.adapters.CountryAdapter;
 import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.OnBoomListenerAdapter;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -60,6 +67,8 @@ public class MainActivity
     SwipeRefreshLayout swipeRefresh;
     @BindView(R.id.recycler_view_content)
     RecyclerView recyclerViewContent;
+    @BindView(R.id.bmb)
+    BoomMenuButton boomMenuButton;
     //endregion
 
     @Override
@@ -74,6 +83,7 @@ public class MainActivity
         setUpLayout();
         setUpRecyclerView();
         setUpValues();
+        setUpBmb();
     }
 
     @Override
@@ -134,6 +144,92 @@ public class MainActivity
         recyclerViewContent.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewContent.setItemAnimator(new DefaultItemAnimator());
         recyclerViewContent.setAdapter(countryAdapter);
+    }
+
+    private void setUpBmb() {
+        boomMenuButton.setButtonEnum(ButtonEnum.Ham);
+        boomMenuButton.setPiecePlaceEnum(PiecePlaceEnum.HAM_6);
+        boomMenuButton.setButtonPlaceEnum(ButtonPlaceEnum.HAM_6);
+
+        boomMenuButton.setOnBoomListener(new OnBoomListenerAdapter() {
+            @Override
+            public void onBoomWillShow() {
+                super.onBoomWillShow();
+                hideKeyboard();
+            }
+        });
+
+        HamButton.Builder builderAll = new HamButton.Builder()
+                .normalText(getString(R.string.main_region_all))
+                .normalColorRes(R.color.colorWhiteOpaque)
+                .highlightedColorRes(R.color.colorWhiteOpaque)
+                .pieceColorRes(R.color.colorWhiteOpaque)
+                .normalTextColor(Color.BLACK)
+                .listener(index -> {
+                    searchItem.collapseActionView();
+                    countryPresenter.getAll();
+                });
+        boomMenuButton.addBuilder(builderAll);
+
+        HamButton.Builder builderAfrica = new HamButton.Builder()
+                .normalText(getString(R.string.main_region_africa))
+                .normalColorRes(R.color.colorRegionAfrica)
+                .highlightedColorRes(R.color.colorRegionAfrica)
+                .pieceColorRes(R.color.colorRegionAfrica)
+                .normalTextColor(Color.WHITE)
+                .listener(index -> {
+                    searchItem.collapseActionView();
+                    countryPresenter.getByRegion(getString(R.string.main_region_africa));
+                });
+        boomMenuButton.addBuilder(builderAfrica);
+
+        HamButton.Builder builderAmericas = new HamButton.Builder()
+                .normalText(getString(R.string.main_region_americas))
+                .normalColorRes(R.color.colorRegionAmericas)
+                .highlightedColorRes(R.color.colorRegionAmericas)
+                .pieceColorRes(R.color.colorRegionAmericas)
+                .normalTextColor(Color.WHITE)
+                .listener(index -> {
+                    searchItem.collapseActionView();
+                    countryPresenter.getByRegion(getString(R.string.main_region_americas));
+                });
+        boomMenuButton.addBuilder(builderAmericas);
+
+        HamButton.Builder builderAsia = new HamButton.Builder()
+                .normalText(getString(R.string.main_region_asia))
+                .normalColorRes(R.color.colorRegionAsia)
+                .highlightedColorRes(R.color.colorRegionAsia)
+                .pieceColorRes(R.color.colorRegionAsia)
+                .normalTextColor(Color.BLACK)
+                .listener(index -> {
+                    searchItem.collapseActionView();
+                    countryPresenter.getByRegion(getString(R.string.main_region_asia));
+                });
+        boomMenuButton.addBuilder(builderAsia);
+
+        HamButton.Builder builderEurope = new HamButton.Builder()
+                .normalText(getString(R.string.main_region_europe))
+                .normalColorRes(R.color.colorRegionEurope)
+                .highlightedColorRes(R.color.colorRegionEurope)
+                .pieceColorRes(R.color.colorRegionEurope)
+                .normalTextColor(Color.WHITE)
+                .listener(index -> {
+                    searchItem.collapseActionView();
+                    countryPresenter.getByRegion(getString(R.string.main_region_europe));
+                });
+        boomMenuButton.addBuilder(builderEurope);
+
+        HamButton.Builder builderOceania = new HamButton.Builder()
+                .normalText(getString(R.string.main_region_oceania))
+                .normalColorRes(R.color.colorRegionOceania)
+                .highlightedColorRes(R.color.colorRegionOceania)
+                .pieceColorRes(R.color.colorRegionOceania)
+                .normalTextColor(Color.WHITE)
+                .listener(index -> {
+                    searchItem.collapseActionView();
+                    countryPresenter.getByRegion(getString(R.string.main_region_oceania));
+                });
+        boomMenuButton.addBuilder(builderOceania);
     }
 
     @Override

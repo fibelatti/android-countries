@@ -28,4 +28,14 @@
             layout="@layout/layout_placeholder_no_results"/>
 
     </RelativeLayout>
+
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        app:bmb_normalColor="@color/colorAccent"/>
 </android.support.design.widget.CoordinatorLayout>

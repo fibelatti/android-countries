@@ -86,4 +86,7 @@ dependencies {
 
     // okHttp
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
+
+    // BoomMenu
+    compile "com.nightonke:boommenu:$rootProject.ext.boomMenuVersion"
 }
