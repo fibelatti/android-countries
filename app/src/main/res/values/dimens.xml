@@ -28,4 +28,9 @@
 
     <dimen name="card_margin">4dp</dimen>
     <dimen name="card_radius">2dp</dimen>
+
+    <dimen name="button_height">60dp</dimen>
+
+    <dimen name="flag_width">100dp</dimen>
+    <dimen name="flag_height">70dp</dimen>
 </resources>
