@@ -89,4 +89,7 @@ dependencies {
 
     // BoomMenu
     compile "com.nightonke:boommenu:$rootProject.ext.boomMenuVersion"
+
+    // Circular Image View
+    compile "de.hdodenhof:circleimageview:$rootProject.ext.circularImageViewVersion"
 }
