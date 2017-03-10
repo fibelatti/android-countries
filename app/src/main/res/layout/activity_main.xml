@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteOpaque"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    tools:context=".presentation.ui.activities.MainActivity">
+
+    <include layout="@layout/toolbar_default"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include
+            layout="@layout/layout_relative_swipe_recycler_view"/>
+
+        <include
+            layout="@layout/layout_placeholder_retry_button"/>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
