@@ -3,6 +3,8 @@ package com.fibelatti.countries.presentation.presenters.impl;
 import com.fibelatti.countries.data.remote.impl.CountryRepositoryRemoteImpl;
 import com.fibelatti.countries.data.repository.CountryRepository;
 import com.fibelatti.countries.data.repository.impl.CountryRepositoryImpl;
+import com.fibelatti.countries.helpers.AnalyticsHelper;
+import com.fibelatti.countries.helpers.impl.AnalyticsHelperImpl;
 import com.fibelatti.countries.presentation.presenters.CountryPresenter;
 import com.fibelatti.countries.presentation.presenters.CountryPresenterView;
 
@@ -16,6 +18,7 @@ public class CountryPresenterImpl
     private CountryPresenterView view;
     private CountryRepository countryRepository;
     private Subscription countrySubscription;
+    private AnalyticsHelper analyticsHelper;
 
     private static final int OPERATION_ALL = 0;
     private static final int OPERATION_QUERY = 1;
@@ -36,6 +39,7 @@ public class CountryPresenterImpl
     @Override
     public void setUp() {
         countryRepository = new CountryRepositoryImpl(new CountryRepositoryRemoteImpl());
+        analyticsHelper = AnalyticsHelperImpl.getInstance();
     }
 
     @Override
@@ -47,6 +51,8 @@ public class CountryPresenterImpl
     @Override
     public void getAll() {
         this.currentOperation = OPERATION_ALL;
+
+        analyticsHelper.fireGetAllEvent();
 
         if (countrySubscription != null && !countrySubscription.isUnsubscribed())
             countrySubscription.unsubscribe();
@@ -64,6 +70,8 @@ public class CountryPresenterImpl
         this.currentOperation = OPERATION_QUERY;
         this.query = query;
 
+        analyticsHelper.fireQueryEvent(query);
+
         if (countrySubscription != null && !countrySubscription.isUnsubscribed())
             countrySubscription.unsubscribe();
 
@@ -79,6 +87,8 @@ public class CountryPresenterImpl
     public void getByRegion(String region) {
         this.currentOperation = OPERATION_REGION;
         this.region = region;
+
+        analyticsHelper.fireRegionEvent(region);
 
         if (countrySubscription != null && !countrySubscription.isUnsubscribed())
             countrySubscription.unsubscribe();

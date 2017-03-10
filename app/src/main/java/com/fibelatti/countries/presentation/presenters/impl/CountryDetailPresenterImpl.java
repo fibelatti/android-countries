@@ -3,6 +3,8 @@ package com.fibelatti.countries.presentation.presenters.impl;
 import com.fibelatti.countries.data.remote.impl.CountryRepositoryRemoteImpl;
 import com.fibelatti.countries.data.repository.CountryRepository;
 import com.fibelatti.countries.data.repository.impl.CountryRepositoryImpl;
+import com.fibelatti.countries.helpers.AnalyticsHelper;
+import com.fibelatti.countries.helpers.impl.AnalyticsHelperImpl;
 import com.fibelatti.countries.presentation.presenters.CountryDetailPresenter;
 import com.fibelatti.countries.presentation.presenters.CountryDetailPresenterView;
 
@@ -16,6 +18,7 @@ public class CountryDetailPresenterImpl
     private CountryDetailPresenterView view;
     private CountryRepository countryRepository;
     private Subscription countrySubscription;
+    private AnalyticsHelper analyticsHelper;
 
     private CountryDetailPresenterImpl(CountryDetailPresenterView view) {
         this.view = view;
@@ -28,6 +31,7 @@ public class CountryDetailPresenterImpl
     @Override
     public void setUp() {
         countryRepository = new CountryRepositoryImpl(new CountryRepositoryRemoteImpl());
+        analyticsHelper = AnalyticsHelperImpl.getInstance();
     }
 
     @Override
@@ -38,6 +42,8 @@ public class CountryDetailPresenterImpl
 
     @Override
     public void getCountryByName(String countryName) {
+        analyticsHelper.fireDetailEvent(countryName);
+
         if (countrySubscription != null && !countrySubscription.isUnsubscribed())
             countrySubscription.unsubscribe();
 
