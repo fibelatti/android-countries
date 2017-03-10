@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_placeholder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/margin_small"
+    android:layout_marginRight="@dimen/margin_small"
+    android:descendantFocusability="blocksDescendants"
+    android:visibility="gone"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/text_view_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:padding="@dimen/padding_large"
+        android:text="@string/generic_msg_error"
+        android:textColor="@color/textSecondary"
+        android:textSize="@dimen/text_size_regular"/>
+
+    <Button
+        android:id="@+id/button_try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height"
+        android:layout_below="@+id/text_view_placeholder"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="@string/hint_try_again"
+        android:theme="@style/PrimaryButton"/>
+</RelativeLayout>
