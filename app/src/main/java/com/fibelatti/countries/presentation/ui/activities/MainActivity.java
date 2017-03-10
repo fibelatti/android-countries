@@ -26,6 +26,7 @@ import com.fibelatti.countries.presentation.presenters.CountryPresenter;
 import com.fibelatti.countries.presentation.presenters.CountryPresenterView;
 import com.fibelatti.countries.presentation.presenters.impl.CountryPresenterImpl;
 import com.fibelatti.countries.presentation.ui.adapters.CountryAdapter;
+import com.fibelatti.countries.presentation.ui.extensions.RecyclerTouchListener;
 import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
@@ -144,6 +145,11 @@ public class MainActivity
         recyclerViewContent.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewContent.setItemAnimator(new DefaultItemAnimator());
         recyclerViewContent.setAdapter(countryAdapter);
+
+        recyclerViewContent.addOnItemTouchListener(new RecyclerTouchListener.Builder(this)
+                .setOnItemTouchListener((view, position) -> startActivity(
+                        CountryDetailActivity.getCallingIntent(this, countryAdapter.getCountryByIndex(position))))
+                .build());
     }
 
     private void setUpBmb() {
