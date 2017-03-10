@@ -33,4 +33,6 @@
 
     <dimen name="flag_width">100dp</dimen>
     <dimen name="flag_height">70dp</dimen>
+
+    <dimen name="flag_circular">150dp</dimen>
 </resources>

@@ -32,4 +32,15 @@
     <string name="main_region_asia">Asia</string>
     <string name="main_region_europe">Europe</string>
     <string name="main_region_oceania">Oceania</string>
+
+    <!-- CountryDetailActivity -->
+    <string name="country_detail_capital">Capital</string>
+    <string name="country_detail_population">Population</string>
+    <string name="country_detail_native_name">Native Name</string>
+    <string name="country_detail_demonym">Demonym</string>
+
+    <string name="country_detail_calling_code">Calling code</string>
+    <string name="country_detail_currencies">Currencies</string>
+    <string name="country_detail_languages">Languages</string>
+    <string name="country_detail_timezones">Timezones</string>
 </resources>

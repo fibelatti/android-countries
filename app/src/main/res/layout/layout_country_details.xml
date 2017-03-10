@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_content_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:visibility="gone"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:id="@+id/layout_country_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_small">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_view_country_flag"
+            android:layout_width="@dimen/flag_circular"
+            android:layout_height="@dimen/flag_circular"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"/>
+
+        <TextView
+            android:id="@+id/text_view_country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_view_country_flag"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_size_extra_large"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_view_country_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_country_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textColor="@color/textSecondary"
+            android:textSize="@dimen/text_size_large"/>
+
+        <View
+            android:id="@+id/divider_country_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_size"
+            android:layout_below="@+id/text_view_country_region"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/colorGrayLight"/>
+
+        <LinearLayout
+            android:id="@+id/layout_country_capital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_country_info"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_capital"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_capital"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_population"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_capital"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_population"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_population"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_native_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_population"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_native_name"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_native_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_demonym"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_native_name"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_demonym"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_demonym"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_calling_codes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_demonym"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_calling_code"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_calling_codes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_currencies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_calling_codes"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_currencies"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_currencies"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_languages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_currencies"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_languages"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_languages"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_country_timezones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_country_languages"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/country_detail_timezones"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_size_regular"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_view_country_timezones"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_size_regular"/>
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/image_view_expanded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</ScrollView>
