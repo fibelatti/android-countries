@@ -18,8 +18,10 @@ public class CountryPresenterImpl
     private Subscription countrySubscription;
 
     private static final int OPERATION_ALL = 0;
+    private static final int OPERATION_QUERY = 1;
 
     private int currentOperation;
+    private String query;
 
     private CountryPresenterImpl(CountryPresenterView view) {
         this.view = view;
@@ -56,10 +58,29 @@ public class CountryPresenterImpl
     }
 
     @Override
+    public void search(String query) {
+        this.currentOperation = OPERATION_QUERY;
+        this.query = query;
+
+        if (countrySubscription != null && !countrySubscription.isUnsubscribed())
+            countrySubscription.unsubscribe();
+
+        countrySubscription = countryRepository.search(query)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(() -> view.clearListAndShowLoading())
+                .doOnCompleted(() -> view.hideLoadAndNotifyChanges())
+                .subscribe((countries) -> view.addResultsToList(countries), (throwable) -> view.handleError(throwable));
+    }
+
+    @Override
     public void restoreData() {
         switch (currentOperation) {
             case OPERATION_ALL:
                 getAll();
+                break;
+            case OPERATION_QUERY:
+                search(query);
                 break;
             default:
                 getAll();
