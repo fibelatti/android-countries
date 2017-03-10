@@ -9,5 +9,7 @@ public interface CountryPresenter {
 
     void search(String query);
 
+    void getByRegion(String region);
+
     void restoreData();
 }

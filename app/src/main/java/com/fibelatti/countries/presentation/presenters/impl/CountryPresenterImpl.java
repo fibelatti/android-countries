@@ -19,9 +19,11 @@ public class CountryPresenterImpl
 
     private static final int OPERATION_ALL = 0;
     private static final int OPERATION_QUERY = 1;
+    private static final int OPERATION_REGION = 2;
 
     private int currentOperation;
     private String query;
+    private String region;
 
     private CountryPresenterImpl(CountryPresenterView view) {
         this.view = view;
@@ -74,6 +76,22 @@ public class CountryPresenterImpl
     }
 
     @Override
+    public void getByRegion(String region) {
+        this.currentOperation = OPERATION_REGION;
+        this.region = region;
+
+        if (countrySubscription != null && !countrySubscription.isUnsubscribed())
+            countrySubscription.unsubscribe();
+
+        countrySubscription = countryRepository.getByRegion(region)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(() -> view.clearListAndShowLoading())
+                .doOnCompleted(() -> view.hideLoadAndNotifyChanges())
+                .subscribe((countries) -> view.addResultsToList(countries), (throwable) -> view.handleError(throwable));
+    }
+
+    @Override
     public void restoreData() {
         switch (currentOperation) {
             case OPERATION_ALL:
@@ -81,6 +99,9 @@ public class CountryPresenterImpl
                 break;
             case OPERATION_QUERY:
                 search(query);
+                break;
+            case OPERATION_REGION:
+                getByRegion(region);
                 break;
             default:
                 getAll();
